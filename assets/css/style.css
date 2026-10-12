@@ -1,0 +1,111 @@
+/* GMAT Style — refonte moderne/professionnelle */
+:root {
+  --primary: #0a2540;
+  --primary-light: #143d6b;
+  --accent: #00a3e0;
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --text: #1a2332;
+  --text-muted: #6b7280;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(10,37,64,0.08);
+  --shadow-lg: 0 12px 40px rgba(10,37,64,0.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sidebar corrigée et stylisée */
+.sidebar-nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 1000;
+  width: 260px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding-top: 1rem;
+  border-radius: 0 18px 18px 0;
+  box-shadow: var(--shadow-lg);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+.sidebar-nav::-webkit-scrollbar { width: 6px; }
+.sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 10px; }
+
+/* Main content décalé */
+main, .container-fluid {
+  margin-left: 260px !important;
+  padding: 1.5rem 2rem 3rem 2rem;
+  max-width: 1200px;
+}
+
+/* Header amélioré */
+header.bg-dark {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Cards */
+.kpi-card {
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  color: white;
+  box-shadow: var(--shadow);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.kpi-card.bg-success { background: linear-gradient(135deg, #1b7a4a, #146b3a) !important; }
+.kpi-card.bg-info { background: linear-gradient(135deg, #0077b6, #005a8f) !important; }
+.kpi-card.bg-warning { background: linear-gradient(135deg, #d4880e, #a66b0a) !important; color: #fff !important; }
+.kpi-card.bg-danger { background: linear-gradient(135deg, #b23a2a, #8f2a1f) !important; }
+.kpi-card.bg-secondary { background: linear-gradient(135deg, #556677, #3e5266) !important; }
+.kpi-value { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; }
+.kpi-label { font-size: 0.85rem; opacity: 0.9; font-weight: 500; }
+
+/* Navigation links sidebar */
+.sidebar-nav .nav-link {
+  color: rgba(255,255,255,0.85) !important;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+  padding: 0.65rem 1rem !important;
+  transition: background 0.15s ease, color 0.15s ease;
+  font-weight: 500;
+}
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+  background: rgba(255,255,255,0.12) !important;
+  color: #fff !important;
+}
+
+/* Responsive mobile : sidebar overlay */
+@media (max-width: 991.98px) {
+  .sidebar-nav {
+    position: fixed;
+    top: 60px; left: 0;
+    width: 260px;
+    height: calc(100vh - 60px);
+    transform: translateX(-110%);
+    transition: transform 0.3s ease;
+    z-index: 1100;
+    border-radius: 0 18px 18px 0;
+    box-shadow: var(--shadow-lg);
+  }
+  .sidebar-nav.open { transform: translateX(0); }
+  main, .container-fluid { margin-left: 0 !important; padding: 1rem 1rem 2rem 1rem; }
+}
+
+/* Utilitaires visuelles */
+.rounded-xl { border-radius: var(--radius) !important; }
+.shadow-soft { box-shadow: var(--shadow) !important; }
+.text-gradient { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
